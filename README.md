@@ -1,6 +1,6 @@
 # SKN24_2nd_1Team
 ---
-## 카드비
+## 래퍼
 
 <!-- prettier-ignore-start -->
 | 김지원 | 나혜린 | 박정은 | 진세형 | 황인규 |
@@ -11,7 +11,7 @@
 ---
 ## 1. 프로젝트 개요
 
-프로젝트 이름: **카드사 VIP 이탈 예측 및 방지 모델 구축**
+프로젝트 이름: **카드비**
 
 ### 1-1. 개요
 본 프로젝트는 국내 카드사의 VIP 회원 금융 거래 및 행태 데이터를 결합하여, 이용 금액·잔액 변화·연체 이력 등 금융 변수가 고객의 이탈(Churn)에 미치는 영향을 통계 및 머신러닝 관점에서 분석하였음. 단순히 단일 시점의 이탈 여부를 확인하는 것을 넘어, 6개월간의 시계열적 행동 패턴을 분석하여 이탈 전조 증상을 식별하고 선제적 방어 전략을 도출하는 데 목적이 있음.
@@ -174,16 +174,24 @@ AUC- 파란 실선  모델  점수 1.00
 실제 이탈자는 몇 명이나 예측했는지 + 이탈 안한 고개을 얼마나 잘못 이탈 예측했는지 
 
 2️⃣사용자 기반 그룹 분할된 고객 이탈 예측 LightGBM 모델  
-GroupShuffleSplit 80:20 비율로 데이터를 발급회원번호로 분리한 모델  
+GroupShuffleSplit (sklearn) 80:20 비율로 데이터를 발급회원번호로 분리한 모델  
 - 데이터를 그룹 단위로 분리하여 학습/테스트 인덱스를 무작위로 생성합니다. 여기서 그룹이란 샘플을 특정 기준(예: 사용자 ID, 지역 등)으로 묶은 것을 정수로 표현한 것입니다.  
+![Screenshot_2026-02-24_at_02 45 32](https://github.com/user-attachments/assets/39a3ae94-e558-4af7-a8f0-fa5f936f8dd5)
+
+
+![Screenshot_2026-02-24_at_02 46 27](https://github.com/user-attachments/assets/761af44f-4ac2-4dde-aff7-7449c0fe087e)
 
 Precision 0.91 →  "이 사람 떠날 것 같다"고 한 사람 중 91%가 실제로 이탈  
 Recall 1.00 → 실제 이탈자를 거의 한 명도 빠짐없이 탐지  
 F1-Score 0.95 → Precision과 Recall을 합친 종합 점수, 매우 우수 
 
 3️⃣LightGBM Optuna 활용  
-optuna.create_study 함수: 모델이 최적의 하이퍼파라미터 찾기 위해 수행하는 반복하는 실험 과정  
+optuna create_study() 함수: 모델이 최적의 하이퍼파라미터 찾기 위해 수행하는 반복하는 실험 과정  
 과적합  방지 목표로 optuna 하이퍼파라미터 설정값 정의  
+![Screenshot_2026-02-24_at_03 03 59](https://github.com/user-attachments/assets/b002cb5d-b283-42ef-b956-3427d7928c63)
+
+
+![Screenshot_2026-02-24_at_03 05 04-3](https://github.com/user-attachments/assets/ab6e5ed6-060a-40d3-ae13-771cde0285c6)
 
 결과:  
 최적 파라미터 출력  
