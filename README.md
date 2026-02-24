@@ -106,4 +106,14 @@
 
 ---
 
+### 7. 모델(XGBoost, Decision Tree, RandomForest, LightGBM)
+
+### 7-1. XGBoost
+<img width="762" height="48" alt="image" src="https://github.com/user-attachments/assets/ced5a775-731f-46e9-b790-103a1410a646" />
+<img width="452" height="211" alt="image" src="https://github.com/user-attachments/assets/50fa5c7d-7183-4529-a68c-8d3ff3d58963" />
+<img width="690" height="590" alt="image" src="https://github.com/user-attachments/assets/60096bb2-74ce-4385-931e-48968413cdc4" />
+
+### 7-2. Decision Tree
+<img width="392" height="237" alt="image" src="https://github.com/user-attachments/assets/b9d4d87e-8072-4c06-b434-731f8db7b30b" />
+<img width="395" height="145" alt="image" src="https://github.com/user-attachments/assets/f1bcbe10-4eb2-4504-8498-81bcc2420b54" />
 
