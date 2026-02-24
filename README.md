@@ -227,8 +227,9 @@ optuna create_study() 함수: 모델이 최적의 하이퍼파라미터 찾기 �
 Precision 0.91 →  "이 사람 떠날 것 같다"고 한 사람 중 91%가 실제로 이탈  
 Recall 1.00 → 실제 이탈자를 거의 한 명도 빠짐없이 탐지  
 F1-Score 0.95 → Precision과 Recall 두 가지를 합친 종합 점수 95점 
-<img width="548" height="470" alt="image1" src="https://github.com/user-attachments/assets/48272092-53b7-42e2-af26-a9e67799a875" />
 
+
+<img width="548" height="470" alt="image1" src="https://github.com/user-attachments/assets/48272092-53b7-42e2-af26-a9e67799a875" />
 <img width="443" height="189" alt="image" src="https://github.com/user-attachments/assets/ed46f25c-a9ee-4ef9-b3ee-6e246bd30e03" />
 
 ---
