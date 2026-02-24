@@ -124,6 +124,12 @@
 ### 7. 모델(XGBoost, Decision Tree, RandomForest, LightGBM)
 
 ### 7-1. XGBoost
+
+<img width="430" height="204" alt="image" src="https://github.com/user-attachments/assets/be4719e6-a7d1-43b3-b6c9-2f6c802aad1d" />  
+
+- 이탈 결과를 사실상 알려주는 상태·탈회·최근사용 같은 컬럼을 제거해 모델이 정답을 읽는 대신 실제 패턴으로 일반화해 예측  
+- 과하게 부풀려졌던 성능이 현실적인 수준으로 내려옴  
+
 <img width="762" height="48" alt="image" src="https://github.com/user-attachments/assets/ced5a775-731f-46e9-b790-103a1410a646" />  
 <img width="452" height="211" alt="image" src="https://github.com/user-attachments/assets/50fa5c7d-7183-4529-a68c-8d3ff3d58963" />  
 
