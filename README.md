@@ -132,7 +132,7 @@ F1-Score 0.51 → Precision과 Recall을 종합한 점수로, 이탈 탐지 성�
 
 <img width="690" height="590" alt="image" src="https://github.com/user-attachments/assets/60096bb2-74ce-4385-931e-48968413cdc4" />  
 
-ROC-AUC 0.9944 → 모델이 이탈자(1)와 비이탈자(0)를 점수 기준으로 구분하는 능력이 매우 뛰어남  
+ROC-AUC 0.9944
 
 ### 7-2. Decision Tree
 <img width="392" height="237" alt="image" src="https://github.com/user-attachments/assets/b9d4d87e-8072-4c06-b434-731f8db7b30b" />  
