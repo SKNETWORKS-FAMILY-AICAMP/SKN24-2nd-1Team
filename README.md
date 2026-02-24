@@ -19,9 +19,9 @@
 기대효과: 고가치 고객(VIP)의 유지율을 높이기 위한 데이터 기반의 타겟 마케팅 가이드라인 및 조기 경보 시스템 구축의 기초 인사이트를 제공함.
 
 ### 1-2. 프로젝트 배경
-최근 카드업계는 가맹점 수수료 수익 비중이 30% 미만으로 하락하며 전통적인 수익 구조의 한계에 직면했다. 이는 14년 간 지속된 가맹점 수수료 인하 정책의 영향(1)으로, 2025년에도 수수료 수익 확보에 어려움을 보였다.
-이러한 환경 변화에 대응하기 위해 카드사들은 높은 연회비가 책정된 프리미엄 카드 비중을 확대하는 수익 구조 다변화 전략을 추진하고 있다. 2025년 2분기 기준 연회비 수익은 약 7% 상승하며 전체 수익 하락을 상회하는 핵심적인 역할을 수행했다.(2)
-특히 프리미엄 카드를 이용하는 VIP 고객은 높은 소비 여력을 바탕으로 백화점 등 대형 가맹점에서의 결제 비중이 높아 카드사 수익성에 기여하는 바가 크다(3)(4)(5). 또한 이들은 카드대출 상품 이용 시에도 상대적으로 낮은 연체율을 유지하여 자산 건전성 확보에도 긍정적인 영향을 미친다.
+최근 카드업계는 가맹점 수수료 수익 비중이 30% 미만으로 하락하며 전통적인 수익 구조의 한계에 직면했다. 이는 14년 간 지속된 가맹점 수수료 인하 정책의 영향(1)으로, 2025년에도 수수료 수익 확보에 어려움을 보였다.  
+이러한 환경 변화에 대응하기 위해 카드사들은 높은 연회비가 책정된 프리미엄 카드 비중을 확대하는 수익 구조 다변화 전략을 추진하고 있다. 2025년 2분기 기준 연회비 수익은 약 7% 상승하며 전체 수익 하락을 상회하는 핵심적인 역할을 수행했다.(2)  
+특히 프리미엄 카드를 이용하는 VIP 고객은 높은 소비 여력을 바탕으로 백화점 등 대형 가맹점에서의 결제 비중이 높아 카드사 수익성에 기여하는 바가 크다(3)(4)(5). 또한 이들은 카드대출 상품 이용 시에도 상대적으로 낮은 연체율을 유지하여 자산 건전성 확보에도 긍정적인 영향을 미친다.  
 본 프로젝트는 이와 같은 업계의 구조적 변화를 바탕으로, 카드사의 핵심 수익원인 VIP 고객의 이탈 예측을 목표로 한다.
 
 ---
@@ -109,11 +109,86 @@
 ### 7. 모델(XGBoost, Decision Tree, RandomForest, LightGBM)
 
 ### 7-1. XGBoost
-<img width="762" height="48" alt="image" src="https://github.com/user-attachments/assets/ced5a775-731f-46e9-b790-103a1410a646" />
-<img width="452" height="211" alt="image" src="https://github.com/user-attachments/assets/50fa5c7d-7183-4529-a68c-8d3ff3d58963" />
-<img width="690" height="590" alt="image" src="https://github.com/user-attachments/assets/60096bb2-74ce-4385-931e-48968413cdc4" />
+<img width="762" height="48" alt="image" src="https://github.com/user-attachments/assets/ced5a775-731f-46e9-b790-103a1410a646" />  
+<img width="452" height="211" alt="image" src="https://github.com/user-attachments/assets/50fa5c7d-7183-4529-a68c-8d3ff3d58963" />  
+
+Precision 0.66 → 떠날 것 같다고 예측한 사람 중 66%가 실제로 이탈  
+Recall 0.42 → 실제 이탈자의 42%만 탐지 (58%는 놓침)  
+F1-Score 0.51 → Precision과 Recall을 종합한 점수로, 이탈 탐지 성능은 보통 수준  
+
+<img width="690" height="590" alt="image" src="https://github.com/user-attachments/assets/60096bb2-74ce-4385-931e-48968413cdc4" />  
+
+ROC-AUC 0.9944 → 모델이 이탈자(1)와 비이탈자(0)를 점수 기준으로 구분하는 능력이 매우 뛰어남  
 
 ### 7-2. Decision Tree
-<img width="392" height="237" alt="image" src="https://github.com/user-attachments/assets/b9d4d87e-8072-4c06-b434-731f8db7b30b" />
-<img width="395" height="145" alt="image" src="https://github.com/user-attachments/assets/f1bcbe10-4eb2-4504-8498-81bcc2420b54" />
+<img width="392" height="237" alt="image" src="https://github.com/user-attachments/assets/b9d4d87e-8072-4c06-b434-731f8db7b30b" />  
 
+max_depth=4, class_weight={0:1, 1:5}로 모델을 단순화하고 이탈자 가중치 부여  
+
+<img width="395" height="145" alt="image" src="https://github.com/user-attachments/assets/f1bcbe10-4eb2-4504-8498-81bcc2420b54" />  
+
+Precision → 초기 결과 0.06 -> 개선 결과: 0.35 (약 6배 상승한 것으로 봄)  
+Recall → 초기 결과 0.92 -> 개선 결과 0.74 ( 실제 이탈자의 74% 확인시켜줌)  
+F1-Score → 초기 결과 0.11 -> 개선 결과 0.48 (의존도 어느 정도 방지되어 성능 향상 된 것으로 봄)  
+
+<img width="1957" height="974" alt="image" src="https://github.com/user-attachments/assets/7efbdaca-57bd-4041-ab8e-e7af7ba6c9f0" />  
+
+트리 분류 시각화
+
+### 7-3. RandomForest
+<img width="519" height="33" alt="image" src="https://github.com/user-attachments/assets/36cd9cda-a066-46d6-8bfd-951ea76c0b06" />  
+
+test_size → 전체 데이터의 25%를 테스트 데이터 설정  
+stratify → 이유 : 테스트셋에 1이 거의 없을 수 있음  
+
+<img width="440" height="23" alt="image" src="https://github.com/user-attachments/assets/1c15c5b5-7bff-4540-81c7-68ccf33f2de2" />  
+
+max_depth=5로 트리 깊이 설정  
+random_state로 난수 고정  
+
+<img width="427" height="301" alt="image" src="https://github.com/user-attachments/assets/f06f9b3e-6523-43fe-b7b0-aa6d4fd9d9fd" />
+
+Precision → 0.58  
+Recall → 1.00  
+F1-Score → 0.74  
+
+### 7-4. LightGBM  
+1️⃣시계열 (time split) 기반의 고객 이탈 예측 LightGBM 모델  
+
+time split 기준으로 분리한 데이터 사용 (사용자 기반 그룹 분할방법 작업한 상태로 적용)  
+시계열 (time split) 핵심: 과거 데이터로 학습하고, 미래 데이터로 시험 보는 것  
+과적합 방지 목적으로 하이퍼파라미터 설정  
+
+<img width="301" height="100" alt="image" src="https://github.com/user-attachments/assets/4b71b871-784e-47a6-a960-0eee08b148fa" />  
+
+결과:  
+Time-based split  
+기간 split 기준: 11월  
+훈련 이탈율: 0.75%  
+테스트 이탈율: 1.11%  
+
+<img width="1155" height="490" alt="image" src="https://github.com/user-attachments/assets/8455a9c2-ef6f-4238-90ae-85242246abd6" />  
+
+ROC - 점선 (대각선) 동전 던지기 수준 (찍는 것과 같음)  
+AUC- 파란 실선  모델  점수 1.00  
+실제 이탈자는 몇 명이나 예측했는지 + 이탈 안한 고개을 얼마나 잘못 이탈 예측했는지 
+
+2️⃣사용자 기반 그룹 분할된 고객 이탈 예측 LightGBM 모델  
+GroupShuffleSplit 80:20 비율로 데이터를 발급회원번호로 분리한 모델  
+- 데이터를 그룹 단위로 분리하여 학습/테스트 인덱스를 무작위로 생성합니다. 여기서 그룹이란 샘플을 특정 기준(예: 사용자 ID, 지역 등)으로 묶은 것을 정수로 표현한 것입니다.  
+
+Precision 0.91 →  "이 사람 떠날 것 같다"고 한 사람 중 91%가 실제로 이탈  
+Recall 1.00 → 실제 이탈자를 거의 한 명도 빠짐없이 탐지  
+F1-Score 0.95 → Precision과 Recall을 합친 종합 점수, 매우 우수 
+
+3️⃣LightGBM Optuna 활용  
+optuna.create_study 함수: 모델이 최적의 하이퍼파라미터 찾기 위해 수행하는 반복하는 실험 과정  
+과적합  방지 목표로 optuna 하이퍼파라미터 설정값 정의  
+
+결과:  
+최적 파라미터 출력  
+최적 파라미터로 학습했을 때 F1 점수가 0.963  
+
+Precision 0.91 →  "이 사람 떠날 것 같다"고 한 사람 중 91%가 실제로 이탈  
+Recall 1.00 → 실제 이탈자를 거의 한 명도 빠짐없이 탐지  
+F1-Score 0.95 → Precision과 Recall 두 가지를 합친 종합 점수 95점 
